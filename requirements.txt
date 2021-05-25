@@ -1,1 +1,1 @@
-# no addition python packages required
+# no additional python packages required
