@@ -1,6 +1,7 @@
 # PyTraceMOE
 
 PyTraceMOE is a simple API wrapper for [TraceMOE](https://trace.moe) written in [Python](https://python.org)
+
 Reference taken from [here](https://github.com/FujiMakoto/pysaucenao).
 
 # Usage
