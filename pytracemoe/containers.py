@@ -5,22 +5,19 @@ classses made for ease of access to the results
 
 class genericresult:
     def __init__(self, data):
-        self.title_english  = data['title_english']  # title in English
-        self.title_romaji   = data['title_romaji']   # in romaji
-        self.title_japanese = data['title_native']  # title in native japanese
+        self.title_english  = data['anilist']['title']['english']  # title in English
+        self.title_romaji   = data['anilist']['title']['romaji']   # in romaji
+        self.title_japanese = data['anilist']['title']['native']  # title in native japanese
         self.episode        = data['episode']  # episode number
         self.similarity     = float('%.2f' % (data['similarity']*100))  # similarity percentage
-        self.timestamp      = data['at']  # exact timestamp
-        self.season         = data['season']  # season of anime
-        self.anilist_id     = data['anilist_id']  # anilisi id of the anime
-        self.mal_id         = data['mal_id']  # MAL id of the anime
-        self.is_hentai      = data['is_adult']  # is hentai or not
+        self.timestamp      = data['from']  # exact timestamp
+        self.anilist_id     = data['anilist']['id']  # anilisi id of the anime
+        self.mal_id         = data['anilist']['idMal']  # MAL id of the anime
+        self.is_hentai      = data['anilist']['isAdult']  # is hentai or not
 
 
 class TraceResults:
     def __init__(self, header, response, resultsList):
-        self.limit          = response['limit']  # api request limit 
-        self.quota          = response['quota']  # api request quota
         self.resultsCount   = len(resultsList)  # total number of results
         self.results        = resultsList  # list of results
         self.header         = header  # data for TraceMOE class

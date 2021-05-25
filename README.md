@@ -4,8 +4,6 @@ PyTraceMOE is a simple API wrapper for [TraceMOE](https://trace.moe) written in 
 
 Reference taken from [here](https://github.com/FujiMakoto/pysaucenao).
 
-API URL used in this wrapper is soon to be deprecated so it may not function later on. 
-
 API Docs are Available [here](https://soruly.github.io/trace.moe-api/#/).
 
 # Usage
@@ -24,8 +22,6 @@ print(f'similarity: {results[0].similarity}')
 print(f'timestamp: {results[0].timestamp}')
 print(f'MAL ID: {results[0].mal_id}')
 print(f'Anilist ID: {results[0].anilist_id}')
-print(f'api calls limit: {results.limit}')
-print(f'api calls quota: {results.quota}')
 ```
 ```
 title: Devilman Crybaby
@@ -34,7 +30,5 @@ similarity: 88.74
 timestamp: 1015.915
 MAL ID: 35120
 Anilist ID: 98460
-api calls limit: 10
-api calls quota: 1000
 ```
 

@@ -3,12 +3,12 @@ pytracemoe is a api wrapper for trace.moe
 """
 
 
-import requests, json, base64  # base64 is required for image encoding
+import requests
 from pytracemoe.containers import *
 
 
 class TraceMOE:
-    API_URL = "https://trace.moe/api/search"  # api url
+    API_URL = "https://api.trace.moe/search?anilistInfo"  # api url
 
     def __init__(self, min_similarity = None):
         self.min_similarity = min_similarity
@@ -24,7 +24,7 @@ class TraceMOE:
         """
         raw_data = requests.post(self.API_URL, params= {'url': imageurl})
         data = raw_data.json()
-        listdata = list(data['docs'])
+        listdata = list(data['result'])
 
         return TraceResults(self.header, data, listdata)
 
@@ -34,14 +34,10 @@ class TraceMOE:
         takes image file's path as input
         returns TraceResults object
         """
-        base64_encodedData = ""  # empty string
-        with open(pathtoimage, 'rb') as file:
-            base64_encodedData = base64.b64encode(file.read())
-            # tracemoe's api requires the image to be enncoded in base64 to work properly
 
-        raw_data = requests.post(self.API_URL, data= {'image': base64_encodedData})
+        raw_data = requests.post(self.API_URL, files= {'image': open(pathtoimage, 'rb')})  # newer api reads image in binary format
         data = raw_data.json()
-        listdata = list(data['docs'])
+        listdata = list(data['result'])
 
         return TraceResults(self.header, data, listdata)
 
